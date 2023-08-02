@@ -3,6 +3,8 @@ package com.infy.quizapp.service;
 import com.infy.quizapp.Questions;
 import com.infy.quizapp.dao.QuestionDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,16 +15,16 @@ public class QuestionService {
     @Autowired
     QuestionDao questionDao;
 
-    public Questions addQuestions(Questions questions) {
-        return questionDao.save(questions);
+    public ResponseEntity<Questions> addQuestions(Questions questions) {
+        return new ResponseEntity<>(questionDao.save(questions), HttpStatus.CREATED);
     }
 
-    public List<Questions> getAllQuestions() {
-        return questionDao.findAll();
+    public ResponseEntity<List<Questions>> getAllQuestions() {
+        return new ResponseEntity<>(questionDao.findAll(), HttpStatus.OK);
     }
 
-    public List<Questions> getQuestionsByCategory(String category) {
-        return questionDao.findByCategory(category);
+    public ResponseEntity<List<Questions>> getQuestionsByCategory(String category) {
+        return new ResponseEntity<>(questionDao.findByCategory(category), HttpStatus.OK);
     }
 
     public void deleteQuestionById(Integer id) {
