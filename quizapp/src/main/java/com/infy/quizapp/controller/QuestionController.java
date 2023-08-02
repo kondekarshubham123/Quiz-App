@@ -33,7 +33,7 @@ public class QuestionController {
     @DeleteMapping("/delete")
     public String deleteQuestion(@RequestParam Integer id){
         questionService.deleteQuestionById(id);
-        return "success";
+        return "deleted";
     }
 
 }
