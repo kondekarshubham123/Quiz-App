@@ -5,6 +5,7 @@ import com.infy.quizapp.dao.QuestionDao;
 import com.infy.quizapp.model.QuestionWrapper;
 import com.infy.quizapp.model.Questions;
 import com.infy.quizapp.model.Quiz;
+import com.infy.quizapp.model.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,5 +41,20 @@ public class QuizService {
         List<Questions> questionsFromDb = quiz.get().getQuestions();
         List<QuestionWrapper> questionsForUser = questionsFromDb.stream().map((question) -> new QuestionWrapper(question.getId(), question.getQuestionTitle(), question.getOption1(), question.getOption2(), question.getOption3(), question.getOption4())).toList();
         return new ResponseEntity<>(questionsForUser, HttpStatus.OK);
+    }
+
+    public ResponseEntity<Integer> calculateResult(Integer id, List<Response> responses) {
+        Quiz quiz = quizDao.findById(id).get();
+        List<Questions> questions = quiz.getQuestions();
+        int right = 0;
+        int i = 0;
+        for(Response response: responses){
+            if(response.getResponse().equals(questions.get(i).getRightAnswer())){
+                right ++;
+            }
+            i++;
+        }
+
+        return new ResponseEntity<>(right, HttpStatus.OK);
     }
 }
