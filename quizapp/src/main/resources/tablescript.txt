@@ -1,0 +1,35 @@
+CREATE TABLE questions (
+    ID SERIAL PRIMARY KEY,
+    category VARCHAR(50),
+    difficulty_level VARCHAR(50),
+    option1 VARCHAR(100),
+    option2 VARCHAR(100),
+    option3 VARCHAR(100),
+    option4 VARCHAR(100),
+    question_title TEXT,
+    right_answer VARCHAR(100)
+);
+
+
+INSERT INTO questions (ID, category, difficulty_level, option1, option2, option3, option4, question_title, right_answer)
+VALUES
+    -- Java Questions
+    (1, 'Java', 'Easy', 'class', 'interface', 'extends', 'implements', 'Which Java keyword is used to create a subclass?', 'extends'),
+    (2, 'Java', 'Medium', 'ArrayList', 'LinkedList', 'HashMap', 'HashSet', 'Which Java collection is based on the hash table?', 'HashMap'),
+    (3, 'Java', 'Hard', 'Overriding', 'Overloading', 'Polymorphism', 'Abstraction', 'What is it called when a subclass provides a specific implementation of a method in its superclass?', 'Overriding'),
+    (4, 'Java', 'Easy', 'int', 'float', 'double', 'char', 'Which data type is used to store whole numbers in Java?', 'int'),
+    (5, 'Java', 'Medium', 'static', 'final', 'abstract', 'private', 'Which access modifier in Java restricts visibility to within the same class?', 'private'),
+    (6, 'Java', 'Hard', 'public', 'protected', 'default', 'private', 'Which access modifier allows visibility within the same package and subclasses?', 'protected'),
+    (7, 'Java', 'Easy', 'Thread.sleep()', 'Thread.join()', 'Thread.start()', 'Thread.stop()', 'Which method is used to pause the execution of the current thread for a specified amount of time?', 'Thread.sleep()'),
+    (8, 'Java', 'Medium', 'super()', 'this()', 'self()', 'parent()', 'Which keyword is used to refer to the immediate parent class object in Java?', 'super()'),
+
+    -- Python Questions
+    (9, 'Python', 'Easy', 'len()', 'size()', 'length()', 'count()', 'Which built-in function is used to get the length of a list or a string in Python?', 'len()'),
+    (10, 'Python', 'Medium', 'tuple', 'list', 'set', 'dict', 'Which data structure in Python is immutable?', 'tuple'),
+    (11, 'Python', 'Hard', 'append()', 'extend()', 'add()', 'insert()', 'Which list method is used to add elements at the end of the list?', 'append()'),
+    (12, 'Python', 'Easy', 'str()', 'string()', 'toString()', 'convert()', 'Which function is used to convert an object to a string in Python?', 'str()'),
+    (13, 'Python', 'Medium', 'int', 'float', 'str', 'bool', 'Which data type is used to represent true or false values in Python?', 'bool'),
+    (14, 'Python', 'Hard', 'range()', 'xrange()', 'sequence()', 'iterator()', 'Which built-in function is used to generate a sequence of numbers in Python?', 'range()'),
+    (15, 'Python', 'Easy', 'try', 'catch', 'except', 'finally', 'Which keyword is used to catch exceptions in Python?', 'except'),
+    (16, 'Python', 'Medium', 'map()', 'filter()', 'reduce()', 'apply()', 'Which function is used to apply a given function to all items in an input list in Python?', 'map()')
+;
