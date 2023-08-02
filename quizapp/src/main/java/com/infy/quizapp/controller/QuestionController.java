@@ -1,6 +1,6 @@
 package com.infy.quizapp.controller;
 
-import com.infy.quizapp.Questions;
+import com.infy.quizapp.model.Questions;
 import com.infy.quizapp.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
