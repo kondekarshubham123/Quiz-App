@@ -13,11 +13,19 @@ public class QuestionService {
     @Autowired
     QuestionDao questionDao;
 
+    public Questions addQuestions(Questions questions) {
+        return questionDao.save(questions);
+    }
+
     public List<Questions> getAllQuestions() {
         return questionDao.findAll();
     }
 
     public List<Questions> getQuestionsByCategory(String category) {
         return questionDao.findByCategory(category);
+    }
+
+    public void deleteQuestionById(Integer id) {
+        questionDao.deleteById(id);
     }
 }

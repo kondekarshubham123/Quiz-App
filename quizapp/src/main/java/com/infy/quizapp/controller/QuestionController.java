@@ -3,15 +3,12 @@ package com.infy.quizapp.controller;
 import com.infy.quizapp.Questions;
 import com.infy.quizapp.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/question")
+@RequestMapping("/questions")
 public class QuestionController {
 
     @Autowired
@@ -25,6 +22,18 @@ public class QuestionController {
     @GetMapping("/category/{category}")
     public List<Questions> getQuestionsByCategory(@PathVariable String category){
         return questionService.getQuestionsByCategory(category);
+    }
+
+    @PostMapping("/add")
+    public String addQuestion(@RequestBody Questions questions){
+        questionService.addQuestions(questions);
+        return "success";
+    }
+
+    @DeleteMapping("/delete")
+    public String deleteQuestion(@RequestParam Integer id){
+        questionService.deleteQuestionById(id);
+        return "success";
     }
 
 }
